@@ -1,0 +1,19 @@
+.hero {
+  position: relative;
+  height: 600px;
+}
+.big-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.scrap {
+  position: absolute;
+  bottom: 0px;
+  right: 0;
+}
+.articles {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}

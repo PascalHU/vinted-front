@@ -1,0 +1,38 @@
+.article {
+  margin-top: 20px;
+  text-decoration: none;
+}
+.avatar {
+  border-radius: 90px;
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.product-img {
+  width: 220px;
+  height: 330px;
+}
+.product-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.product-detail {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.size,
+.brand {
+  color: gray;
+  font-size: 12px;
+}
+.price {
+  font-size: 15px;
+}

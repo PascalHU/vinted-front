@@ -20,7 +20,7 @@ const Offer = () => {
       }
     };
     searchData();
-  }, []);
+  }, [id]);
 
   return isLoading ? (
     <div>Chargement en cours</div>

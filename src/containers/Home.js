@@ -34,8 +34,8 @@ const Home = () => {
         />
       </div>
       <div className="articles container">
-        {data.offers.map((article, index) => {
-          return <Article key={data.offers[index]._id} article={article} />;
+        {data.offers.map((article) => {
+          return <Article key={article._id} article={article} />;
         })}
       </div>
     </div>

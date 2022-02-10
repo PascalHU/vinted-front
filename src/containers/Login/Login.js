@@ -18,7 +18,9 @@ const Login = () => {
           password: password,
         }
       );
-      Cookies.set("token", response.data.token);
+      Cookies.set("token", response.data.token, {
+        expires: 0.04166666666666666666666666666667,
+      }); // 0.04166666666666666666666666666667 = 1h
       navigate("/");
     } catch (error) {
       console.log(error.response);

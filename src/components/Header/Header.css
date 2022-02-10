@@ -10,7 +10,7 @@
   background-color: lightgray;
   padding: 0 10px 0 15px;
   border-radius: 5px;
-  width: 60%;
+  width: 55%;
 }
 .search-bar img {
   height: 35px;
@@ -30,19 +30,22 @@
   gap: 10px;
 }
 .header-button button {
-  height: 30px;
+  height: 40px;
   padding: 0 10px 0 10px;
   border-radius: 5px;
   background-color: white;
   border: none;
 }
-.header-button button:first-child {
-  background-color: white;
+.header-button .signup,
+.header-button .login {
   border: #09aeb6 1px solid;
   color: #09aeb6;
 }
-.header-button button:nth-child(2) {
+.header-button .sell-now {
   background-color: #09aeb6;
-  border: none;
+  color: white;
+}
+.header-button .disconect {
+  background-color: darkred;
   color: white;
 }

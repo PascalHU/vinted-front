@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Home.css";
-import Article from "../components/Article";
+import Article from "../../components/Article/Article";
 
 const Home = () => {
   const [data, setData] = useState("");

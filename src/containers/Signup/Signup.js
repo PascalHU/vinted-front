@@ -1,5 +1,5 @@
 import "./Signup.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -9,7 +9,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
-
+  const navigate = useNavigate();
   const Signup_done = async (event) => {
     try {
       event.preventDefault();
@@ -23,6 +23,7 @@ const Signup = () => {
         }
       );
       Cookies.set("token", response.data.token);
+      navigate("/");
     } catch (error) {
       console.log(error.response);
     }

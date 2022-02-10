@@ -1,16 +1,17 @@
 import logo from "../../assets/img/logo.svg";
 import searchIcon from "../../assets/img/search-1.svg";
 import info from "../../assets/img/info.svg";
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-
 import "./Header.css";
 
 const Header = () => {
-  const [isLogged, setIsLogged] = useState(false);
   const navigate = useNavigate();
-  console.log(Cookies.get("token"));
+
+  const disconnect = () => {
+    Cookies.remove("token");
+    navigate("/");
+  };
 
   return (
     <div className="header container">
@@ -22,8 +23,10 @@ const Header = () => {
         <input type="text" placeholder="Rechercher des articles" />
       </div>
       <div className="header-button">
-        {isLogged ? (
-          <button className="disconect">Se déconnecter</button>
+        {Cookies.get("token") ? (
+          <button className="disconect" onClick={disconnect}>
+            Se déconnecter
+          </button>
         ) : (
           <>
             <button className="signup" onClick={() => navigate("/signup")}>

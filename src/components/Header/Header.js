@@ -5,11 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./Header.css";
 
-const Header = () => {
+const Header = ({ user, token }) => {
   const navigate = useNavigate();
 
   const disconnect = () => {
-    Cookies.remove("token");
+    user(null);
     navigate("/");
   };
 
@@ -23,7 +23,7 @@ const Header = () => {
         <input type="text" placeholder="Rechercher des articles" />
       </div>
       <div className="header-button">
-        {Cookies.get("token") ? (
+        {token ? (
           <button className="disconect" onClick={disconnect}>
             Se déconnecter
           </button>

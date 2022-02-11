@@ -41,6 +41,7 @@ const Signup = ({ user }) => {
         navigate("/");
       }
     } catch (error) {
+      console.log(error);
       console.log("Signup Error ===> ", error.message);
       console.log("Catch error ===> ", error.response);
       if (error.response.status === 409) {

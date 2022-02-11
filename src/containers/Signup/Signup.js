@@ -41,9 +41,8 @@ const Signup = ({ user }) => {
         navigate("/");
       }
     } catch (error) {
-      console.log(error);
-      console.log("Signup Error ===> ", error.message);
-      console.log("Catch error ===> ", error.response);
+      console.log(error.message);
+      console.log(error.response);
       if (error.response.status === 409) {
         setErrorMsg("Email déjà utilisé");
       }
@@ -52,7 +51,7 @@ const Signup = ({ user }) => {
   return (
     <div className="signup-form container">
       <h1>S'inscrire</h1>
-      <form className="signup">
+      <form className="signup" onSubmit={Signup_done}>
         <input
           type="text"
           placeholder="Nom d'utilisateur"
@@ -77,9 +76,6 @@ const Signup = ({ user }) => {
             setPassword(event.target.value);
           }}
         />
-        {incorrectPassword && (
-          <span className="error-Msg">Mot de passe non identique</span>
-        )}
         <input
           type="password"
           placeholder="Confrmer mot de passe"
@@ -90,6 +86,9 @@ const Signup = ({ user }) => {
           onBlur={() => checkPassword("out")}
           onFocus={() => checkPassword("in")}
         />
+        {incorrectPassword && (
+          <span className="error-Msg">Mot de passe non identique</span>
+        )}
         <div className="newsletter">
           <div className="newsletter-checkbox">
             <input
@@ -107,7 +106,7 @@ const Signup = ({ user }) => {
           </p>
         </div>
         <span className="error-Msg">{errorMsg}</span>
-        <button type="button" onClick={Signup_done} className="signup-btn">
+        <button type="submit" className="signup-btn">
           S'inscrire
         </button>
       </form>

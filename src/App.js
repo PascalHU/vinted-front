@@ -8,14 +8,13 @@ import Signup from "./containers/Signup/Signup";
 import Login from "./containers/Login/Login";
 import { useState } from "react";
 import Cookies from "js-cookie";
+
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
 
   const user = (token) => {
     if (token) {
-      Cookies.set("token", token, {
-        expire: 0.041667,
-      });
+      Cookies.set("token", token, { expires: 1 / 24 });
     } else {
       Cookies.remove("token");
     }

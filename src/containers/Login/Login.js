@@ -2,12 +2,13 @@ import "./Login.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Cookies from "js-cookie";
 
-const Login = () => {
+const Login = ({ user }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
+
   const login_done = async (event) => {
     try {
       event.preventDefault();
@@ -18,12 +19,16 @@ const Login = () => {
           password: password,
         }
       );
-      Cookies.set("token", response.data.token, {
-        expires: 0.04166666666666666666666666666667,
-      }); // 0.04166666666666666666666666666667 = 1h
-      navigate("/");
+      if (response.data.token) {
+        user(response.data.token);
+        navigate("/");
+      }
     } catch (error) {
+      console.log(error.message);
       console.log(error.response);
+      if (error.response.status === 400 || 401) {
+        setErrorMsg("Identifiant incorrect");
+      }
     }
   };
   return (
@@ -46,6 +51,7 @@ const Login = () => {
             setPassword(event.target.value);
           }}
         />
+        <span className="error-Msg">{errorMsg}</span>
         <button type="submit" className="signup-btn">
           Se connecter
         </button>

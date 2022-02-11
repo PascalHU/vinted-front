@@ -1,3 +1,6 @@
+.home {
+  margin-bottom: 30px;
+}
 .hero {
   position: relative;
   height: 600px;
@@ -16,4 +19,18 @@
   display: flex;
   gap: 5px;
   flex-wrap: wrap;
+}
+.page-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.page-btn {
+  border: none;
+  background-color: white;
+}
+
+.page-btn:focus {
+  color: red;
 }

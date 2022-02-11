@@ -2,7 +2,6 @@ import logo from "../../assets/img/logo.svg";
 import searchIcon from "../../assets/img/search-1.svg";
 import info from "../../assets/img/info.svg";
 import { Link, useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 import "./Header.css";
 
 const Header = ({ user, token }) => {

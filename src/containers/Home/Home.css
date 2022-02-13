@@ -19,6 +19,7 @@
   display: flex;
   gap: 5px;
   flex-wrap: wrap;
+  margin-bottom: 15px;
 }
 .page-list {
   display: flex;
@@ -30,7 +31,9 @@
   border: none;
   background-color: white;
 }
-
-.page-btn:focus {
+.red {
   color: red;
+}
+.black {
+  color: black;
 }

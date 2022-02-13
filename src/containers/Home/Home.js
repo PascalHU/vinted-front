@@ -3,33 +3,28 @@ import axios from "axios";
 import "./Home.css";
 import Article from "../../components/Article/Article";
 
-const Home = () => {
+const Home = ({ sortValue, minMaxValues, search }) => {
   const [data, setData] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [limit, setLimit] = useState(5);
   const [pageNumber, setPageNumber] = useState(1);
   const page = [];
-
+  const minValue = minMaxValues[0];
+  const maxValue = minMaxValues[1];
   useEffect(() => {
     const searchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${pageNumber}&limit=${limit}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${pageNumber}&limit=${limit}&sort=${sortValue}&priceMin=${minValue}&priceMax=${maxValue}&title=${search}`
         );
         setData(response.data);
         setIsLoading(false);
-        console.log(pageNumber);
-        if (pageNumber === 1) {
-          document.getElementById("page-btn1").style.color = "red";
-        } else {
-          document.getElementById("page-btn1").style.color = "black";
-        }
       } catch (error) {
         console.log(error.response);
       }
     };
     searchData();
-  }, [limit, pageNumber]);
+  }, [limit, pageNumber, sortValue, minValue, maxValue, search]);
 
   const nbPage = Math.ceil(data.count / limit);
   for (let i = 1; i <= nbPage; i++) {
@@ -66,8 +61,7 @@ const Home = () => {
           return (
             <button
               key={index}
-              id={`page-btn${index}`}
-              className="page-btn"
+              className={`page-btn ${index === pageNumber ? "red" : "black"}`}
               onClick={(event) => setPageNumber(Number(event.target.value))}
               value={index}
             >

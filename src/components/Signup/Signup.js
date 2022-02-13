@@ -1,9 +1,9 @@
 import "./Signup.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
-const Signup = ({ user }) => {
+const Signup = ({ user, setSignUpModal, setLoginModal }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,6 +38,7 @@ const Signup = ({ user }) => {
       console.log(response.data);
       if (response.data.token) {
         user(response.data.token);
+        setSignUpModal(false);
         navigate("/");
       }
     } catch (error) {
@@ -110,9 +111,15 @@ const Signup = ({ user }) => {
           S'inscrire
         </button>
       </form>
-      <Link to="/login" className="link-login">
+      <span
+        className="link-login"
+        onClick={() => {
+          setLoginModal(true);
+          setSignUpModal(false);
+        }}
+      >
         Tu as déjà un compte ? Connecte-toi !
-      </Link>
+      </span>
     </div>
   );
 };

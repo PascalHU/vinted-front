@@ -1,22 +1,25 @@
-.signup-form {
+.login-form {
   display: flex;
   align-items: center;
   margin-top: 100px;
   flex-direction: column;
-  width: 250px;
+  padding: 0 40px;
+  width: 300px;
+  height: 350px;
 }
-.signup-form h1 {
+.login-form h1 {
   font-size: 36px;
   font-weight: bold;
 }
-.signup-form form {
+.login-form form {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 100%;
 }
-.signup input {
+
+.login input {
   border: none;
   border-bottom: darkred solid 1px;
   padding-bottom: 5px;
@@ -25,34 +28,20 @@
   color: gray;
   margin-bottom: 10px;
 }
-.signup input:focus {
+.login input:focus {
   outline: none;
 }
-.newsletter-checkbox input {
-  width: auto;
-  height: auto;
-  margin-right: 15px;
-}
-.newsletter span {
-  color: gray;
-}
-.newsletter p {
-  margin-top: 10px;
-  color: rgb(155, 155, 155);
-  width: 250px;
-}
-.signup-btn {
+.login-btn {
   height: 40px;
   border: none;
   background-color: #09aeb6;
   color: white;
   width: 100%;
+  cursor: pointer;
 }
-.link-login {
+.link-signup {
   padding-top: 20px;
   color: #09aeb6;
   text-decoration: none;
-}
-.error-Msg {
-  color: red;
+  cursor: pointer;
 }

@@ -1,11 +1,58 @@
+import "./Header.css";
 import logo from "../../assets/img/logo.svg";
 import searchIcon from "../../assets/img/search-1.svg";
 import info from "../../assets/img/info.svg";
-import { Link, useNavigate } from "react-router-dom";
-import "./Header.css";
 
-const Header = ({ user, token }) => {
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
+import Modal from "react-modal";
+
+import Signup from "../Signup/Signup";
+import Login from "../Login/Login";
+import MinMaxPrice from "../MinMaxPrice/MinMaxPrice";
+import SortPrice from "../SortPrice/SortPrice";
+
+const Header = ({
+  user,
+  token,
+  signUpModal,
+  setSignUpModal,
+  loginModal,
+  setLoginModal,
+  sortValue,
+  setSortValue,
+  values,
+  setMinMaxValues,
+  setSearch,
+}) => {
   const navigate = useNavigate();
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+    },
+  };
+
+  const openSignUpModal = () => {
+    setSignUpModal(true);
+  };
+  const closeSignUpModal = () => {
+    setSignUpModal(false);
+  };
+  const openLoginModal = () => {
+    setLoginModal(true);
+  };
+  const closeLoginModal = () => {
+    setLoginModal(false);
+  };
+  useEffect(() => {
+    Modal.setAppElement(".header");
+  }, []);
 
   const disconnect = () => {
     user(null);
@@ -17,9 +64,21 @@ const Header = ({ user, token }) => {
       <Link to="/">
         <img src={logo} alt="logo" />
       </Link>
-      <div className="search-bar">
-        <img src={searchIcon} alt="loupe" />
-        <input type="text" placeholder="Rechercher des articles" />
+      <div className="header-middle">
+        <div className="search-bar">
+          <img src={searchIcon} alt="loupe" />
+          <input
+            type="text"
+            placeholder="Rechercher des articles"
+            onChange={(event) => {
+              setSearch(event.target.value);
+            }}
+          />
+        </div>
+        <div className="price-filter">
+          <SortPrice sortValue={sortValue} setSortValue={setSortValue} />
+          <MinMaxPrice values={values} setMinMaxValues={setMinMaxValues} />
+        </div>
       </div>
       <div className="header-button">
         {token ? (
@@ -28,12 +87,43 @@ const Header = ({ user, token }) => {
           </button>
         ) : (
           <>
-            <button className="signup" onClick={() => navigate("/signup")}>
+            <button className="signup" onClick={openSignUpModal}>
               S'inscrire
             </button>
-            <button className="login" onClick={() => navigate("/login")}>
+            <Modal
+              isOpen={signUpModal}
+              onRequestClose={closeSignUpModal}
+              style={customStyles}
+              contentLabel="signup"
+            >
+              <button onClick={closeSignUpModal} className="close-modal">
+                X
+              </button>
+              <Signup
+                user={user}
+                setSignUpModal={setSignUpModal}
+                setLoginModal={setLoginModal}
+              />
+            </Modal>
+
+            <button className="login" onClick={openLoginModal}>
               Se connecter
             </button>
+            <Modal
+              isOpen={loginModal}
+              onRequestClose={closeLoginModal}
+              style={customStyles}
+              contentLabel="login"
+            >
+              <button onClick={closeLoginModal} className="close-modal">
+                X
+              </button>
+              <Login
+                user={user}
+                setSignUpModal={setSignUpModal}
+                setLoginModal={setLoginModal}
+              />
+            </Modal>
           </>
         )}
         <button className="sell-now">Vend Maintenant</button>

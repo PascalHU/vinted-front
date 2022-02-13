@@ -4,15 +4,19 @@
 }
 .avatar {
   border-radius: 90px;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   object-fit: cover;
 }
 .user-info {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding-left: 10px;
   margin-bottom: 10px;
+}
+.user-info span {
+  color: gray;
 }
 .product-img {
   width: 220px;
@@ -35,4 +39,7 @@
 }
 .price {
   font-size: 15px;
+}
+.link {
+  text-decoration: none;
 }

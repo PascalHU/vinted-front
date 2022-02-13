@@ -41,6 +41,7 @@
   border-radius: 5px;
   background-color: white;
   border: none;
+  cursor: pointer;
 }
 .header-button .signup,
 .header-button .login {

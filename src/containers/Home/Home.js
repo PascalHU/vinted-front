@@ -6,7 +6,7 @@ import Article from "../../components/Article/Article";
 const Home = ({ sortValue, minMaxValues, search }) => {
   const [data, setData] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(40);
   const [pageNumber, setPageNumber] = useState(1);
   const page = [];
   const minValue = minMaxValues[0];
@@ -44,10 +44,18 @@ const Home = ({ sortValue, minMaxValues, search }) => {
       </div>
       <div className="article-menu container">
         <span className="menu-txt">Afficher</span>
-        <select onChange={(event) => setLimit(Number(event.target.value))}>
+        <select
+          defaultValue={40}
+          onChange={(event) => setLimit(Number(event.target.value))}
+        >
           <option value="5">5</option>
           <option value="10">10</option>
           <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+          <option value="30">30</option>
+          <option value="35">35</option>
+          <option value="40">40</option>
         </select>
       </div>
       <div className="articles container">

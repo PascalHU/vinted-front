@@ -22,12 +22,12 @@ const Login = ({ user, setSignUpModal, setLoginModal }) => {
       if (response.data.token) {
         user(response.data.token);
         setLoginModal(false);
-        navigate("/");
+        navigate("/publish");
       }
     } catch (error) {
       console.log(error.message);
       console.log(error.response);
-      if (error.response.status === 400 || 401) {
+      if (error.response.status === 400 || error.response.status === 401) {
         setErrorMsg("Identifiant incorrect");
       }
     }

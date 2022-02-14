@@ -58,7 +58,13 @@ const Header = ({
     user(null);
     navigate("/");
   };
-
+  const checkisLogged = () => {
+    if (token) {
+      navigate("/publish");
+    } else {
+      setLoginModal(true);
+    }
+  };
   return (
     <div className="header container">
       <Link to="/">
@@ -126,7 +132,9 @@ const Header = ({
             </Modal>
           </>
         )}
-        <button className="sell-now">Vend Maintenant</button>
+        <button className="sell-now" onClick={checkisLogged}>
+          Vend Maintenant
+        </button>
         <button>
           <img src={info} alt="info" />
         </button>

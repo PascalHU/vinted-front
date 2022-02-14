@@ -1,6 +1,7 @@
 import "./Article.css";
 import { Link } from "react-router-dom";
-
+import no_avatar from "../../assets/img/no_avatar.png";
+import no_picture from "../../assets/img/no_picture.png";
 const Article = ({ article }) => {
   const owner = article.owner.account;
   const price = article.product_price.toFixed(2).replace(".", ",") + " €";
@@ -11,20 +12,30 @@ const Article = ({ article }) => {
   return (
     <div className="article">
       <div className="user-info">
-        <img className="avatar" src={owner.avatar.secure_url} alt="avatar" />
+        {owner.avatar ? (
+          <img className="avatar" src={owner.avatar.secure_url} alt="avatar" />
+        ) : (
+          <img className="avatar" src={no_avatar} alt="none" />
+        )}
         <span>{owner.username}</span>
       </div>
       <Link to={`./offer/${id}`} className="link">
         <div className="product">
           <div className="product-img">
-            <img src={article.product_pictures[0].secure_url} alt="product" />
+            {article.product_pictures[0] ? (
+              <img src={article.product_pictures[0].secure_url} alt="product" />
+            ) : article.product_image ? (
+              <img src={article.product_image.secure_url} alt="product" />
+            ) : (
+              <img src={no_picture} alt="none" />
+            )}
           </div>
           <div className="product-detail">
             <span className="price">{price}</span>
             {sizeExist === "TAILLE" && <span className="size">{size}</span>}
             <span className="brand">{brand}</span>
           </div>
-        </div>{" "}
+        </div>
       </Link>
     </div>
   );

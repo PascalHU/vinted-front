@@ -1,11 +1,14 @@
 import "./reset.css";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Header from "./components/Header/Header";
 import Home from "./containers/Home/Home";
 import Offer from "./containers/Offer/Offer";
 import Signup from "./components/Signup/Signup";
 import Login from "./components/Login/Login";
+import Publish from "./containers/Publish/Publish";
+
 import { useState } from "react";
 import Cookies from "js-cookie";
 
@@ -14,7 +17,7 @@ function App() {
   const [signUpModal, setSignUpModal] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
   const [sortValue, setSortValue] = useState("price-asc");
-  const [minMaxValues, setMinMaxValues] = useState([0, 500]);
+  const [minMaxValues, setMinMaxValues] = useState([0, 10000]);
   const [search, setSearch] = useState("");
 
   const user = (token) => {
@@ -54,6 +57,7 @@ function App() {
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="/signup" element={<Signup user={user} />} />
         <Route path="/login" element={<Login user={user} />} />
+        <Route path="/publish" element={<Publish token={token} />} />
       </Routes>
     </Router>
   );

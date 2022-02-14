@@ -2,9 +2,9 @@ import "./MinMaxPrice.css";
 import { Range, getTrackBackground } from "react-range";
 
 const MinMaxPrice = ({ values, setMinMaxValues }) => {
-  const STEP = 1;
+  const STEP = 10;
   const MIN = 0;
-  const MAX = 500;
+  const MAX = 10000;
   return (
     <div className="price-min-max">
       <span>Prix entre : </span>

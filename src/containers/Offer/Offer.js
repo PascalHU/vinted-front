@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Offer.css";
+import no_avatar from "../../assets/img/no_avatar.png";
+import no_picture from "../../assets/img/no_picture.png";
 const Offer = () => {
   const [data, setData] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -28,7 +30,13 @@ const Offer = () => {
     <div className="offer-page">
       <div className="article-container container">
         <div className="article-img">
-          <img src={data.product_pictures[0].secure_url} alt="article" />
+          {data.product_pictures[0] ? (
+            <img src={data.product_pictures[0].secure_url} alt="product" />
+          ) : data.product_image ? (
+            <img src={data.product_image.secure_url} alt="product" />
+          ) : (
+            <img src={no_picture} alt="none" />
+          )}
         </div>
         <div className="article-detail">
           <span className="price">
@@ -51,7 +59,15 @@ const Offer = () => {
               {data.product_description}
             </span>
             <div className="seller-info">
-              <img src={data.owner.account.avatar.secure_url} alt="seller" />
+              {data.owner.account.avatar ? (
+                <img
+                  className="avatar"
+                  src={data.owner.account.avatar.secure_url}
+                  alt="avatar"
+                />
+              ) : (
+                <img className="avatar" src={no_avatar} alt="none" />
+              )}
               <span>{data.owner.account.username}</span>
             </div>
           </div>

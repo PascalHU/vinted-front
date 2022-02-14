@@ -1,0 +1,84 @@
+.background {
+  background-color: lightgray;
+  height: 500vh;
+  padding-top: 50px;
+}
+.add-article-area {
+  display: flex;
+  flex-direction: column;
+}
+h1 {
+  font-size: 28px;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 20px;
+}
+.drop-area {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid gray;
+  background-color: white;
+  margin-top: 20px;
+}
+.drop-zone {
+  height: 85%;
+  width: 95%;
+  border: 1px dashed gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.article-description {
+  background-color: white;
+  width: 100%;
+  border: 1px solid gray;
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.content {
+  margin: 10px 10px 10px 10px;
+}
+.article-line {
+  display: flex;
+  margin: 10px 15px;
+}
+.article-line span {
+  flex: 1;
+  font-family: "Roboto", sans-serif;
+}
+.article-line textarea,
+.article-line input {
+  flex: 1;
+  border: none;
+  border-bottom: lightgray 1px solid;
+  font-family: "Roboto", sans-serif;
+}
+.article-line textarea {
+  max-height: 100px;
+  min-height: 100px;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+.article-description .line {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.price {
+  margin-bottom: 30px;
+}
+.add-article {
+  margin-top: 30px;
+  background-color: #09aeb6;
+  color: white;
+  border: none;
+  height: 50px;
+  width: 100px;
+  border-radius: 15px;
+  align-self: flex-end;
+}

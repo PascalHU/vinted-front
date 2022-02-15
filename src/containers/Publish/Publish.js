@@ -40,7 +40,7 @@ const Publish = ({ token }) => {
       for (let i = 0; i < picture.length; i++) {
         data.append("picture", picture[i]);
       }
-
+      console.log(data);
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
         data,
@@ -50,6 +50,7 @@ const Publish = ({ token }) => {
           },
         }
       );
+      console.log(response);
       if (response.status === 200) {
         navigate(`/offer/${response.data._id}`);
       }

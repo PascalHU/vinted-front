@@ -24,7 +24,6 @@ const Offer = ({ token }) => {
     searchData();
   }, [id]);
 
-  console.log(data);
   return isLoading ? (
     <div>Chargement en cours</div>
   ) : (
@@ -72,17 +71,23 @@ const Offer = ({ token }) => {
               <span>{data.owner.account.username}</span>
             </div>
           </div>
-          <Link
-            to="/payment"
-            className="buy-btn"
-            state={{
-              title: data.product_name,
-              price: Number(data.product_price),
-              token: token,
-            }}
-          >
-            <button>Acheter</button>
-          </Link>
+          {token ? (
+            <Link
+              to="/payment"
+              className="buy-btn"
+              state={{
+                title: data.product_name,
+                price: Number(data.product_price),
+                token: token,
+              }}
+            >
+              <button>Acheter</button>
+            </Link>
+          ) : (
+            <div className="buy-btn gray">
+              <button disabled>Acheter</button>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import axios from "axios";
 
 const CheckoutForm = ({ title, price, token }) => {
   const [completed, setCompleted] = useState(false);
+  const [msg, setMsg] = useState("");
   const stripe = useStripe();
   const elements = useElements();
 
@@ -18,7 +19,8 @@ const CheckoutForm = ({ title, price, token }) => {
     });
     const stripeToken = stripeResponse.token.id;
     const response = await axios.post(
-      "https://lereacteur-vinted-api.herokuapp.com/payment",
+      "https://vinted-sky.herokuapp.com/payment",
+      // "https://lereacteur-vinted-api.herokuapp.com/payment",
       {
         token: stripeToken,
         title: title,
@@ -27,7 +29,10 @@ const CheckoutForm = ({ title, price, token }) => {
     );
     console.log(response.data);
     if (response.data.status === "succeeded") {
+      setMsg("Paiement effectué !");
       setCompleted(true);
+    } else {
+      setMsg("Paiement echoué 😭");
     }
   };
   return (
@@ -77,7 +82,7 @@ const CheckoutForm = ({ title, price, token }) => {
         </div>
       ) : (
         <div className="background">
-          <div className="checkout-form">Paiement effectué ! </div>
+          <div className="checkout-form">{msg}</div>
         </div>
       )}
     </>

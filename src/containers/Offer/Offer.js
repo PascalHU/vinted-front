@@ -1,10 +1,10 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Offer.css";
 import no_avatar from "../../assets/img/no_avatar.png";
 import no_picture from "../../assets/img/no_picture.png";
-const Offer = () => {
+const Offer = ({ token }) => {
   const [data, setData] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
@@ -24,6 +24,7 @@ const Offer = () => {
     searchData();
   }, [id]);
 
+  console.log(data);
   return isLoading ? (
     <div>Chargement en cours</div>
   ) : (
@@ -71,7 +72,17 @@ const Offer = () => {
               <span>{data.owner.account.username}</span>
             </div>
           </div>
-          <button className="buy-btn">Acheter</button>
+          <Link
+            to="/payment"
+            className="buy-btn"
+            state={{
+              title: data.product_name,
+              price: Number(data.product_price),
+              token: token,
+            }}
+          >
+            <button>Acheter</button>
+          </Link>
         </div>
       </div>
     </div>

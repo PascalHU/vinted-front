@@ -76,9 +76,17 @@
 }
 .buy-btn {
   height: 40px;
+  background-color: #09aeb6;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.buy-btn button {
+  cursor: pointer;
   border: none;
   font-size: 20px;
   color: white;
-  background-color: #09aeb6;
-  border-radius: 5px;
+  background-color: transparent;
 }

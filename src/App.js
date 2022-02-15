@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Home from "./containers/Home/Home";
 import Offer from "./containers/Offer/Offer";
-import Signup from "./components/Signup/Signup";
-import Login from "./components/Login/Login";
+
 import Publish from "./containers/Publish/Publish";
+import Payment from "./containers/Payment/Payment";
 
 import { useState } from "react";
 import Cookies from "js-cookie";
@@ -54,10 +54,9 @@ function App() {
             />
           }
         />
-        <Route path="/offer/:id" element={<Offer />} />
-        <Route path="/signup" element={<Signup user={user} />} />
-        <Route path="/login" element={<Login user={user} />} />
+        <Route path="/offer/:id" element={<Offer token={token} />} />
         <Route path="/publish" element={<Publish token={token} />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </Router>
   );

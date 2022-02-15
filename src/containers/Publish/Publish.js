@@ -37,7 +37,9 @@ const Publish = ({ token }) => {
       data.append("brand", brand);
       data.append("size", size);
       data.append("color", color);
-      data.append("picture", picture);
+      for (let i = 0; i < picture.length; i++) {
+        data.append("picture", picture[i]);
+      }
 
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
@@ -59,7 +61,7 @@ const Publish = ({ token }) => {
     <div className="background">
       <form className="add-article-area container" onSubmit={addArticle}>
         <h1>Vends ton article</h1>
-        {/* <Dropzone onDrop={(acceptedFiles) => addPicture(acceptedFiles)}>
+        <Dropzone onDrop={(acceptedFiles) => addPicture(acceptedFiles)}>
           {({ getRootProps, getInputProps }) => (
             <section className="drop-area ">
               <div className="drop-zone" {...getRootProps()}>
@@ -77,14 +79,14 @@ const Publish = ({ token }) => {
               </li>
             ))}
           </ul>
-        </aside> */}
-        <input
+        </aside>
+        {/* <input 
           type="file"
           onChange={(event) => {
             setPicture(event.target.files[0]);
           }}
           required="required"
-        />
+        /> */}
         <div className="article-description">
           <div className="article-line">
             <span>Titre</span>

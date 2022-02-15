@@ -49,7 +49,7 @@ const Publish = ({ token }) => {
         }
       );
       if (response.status === 200) {
-        navigate("/");
+        navigate(`/offer/${response.data._id}`);
       }
     } catch (error) {
       console.log(error.response);
@@ -83,6 +83,7 @@ const Publish = ({ token }) => {
           onChange={(event) => {
             setPicture(event.target.files[0]);
           }}
+          required="required"
         />
         <div className="article-description">
           <div className="article-line">
@@ -91,6 +92,7 @@ const Publish = ({ token }) => {
               type="text"
               placeholder="ex. Chemise Sézane verte"
               onChange={(event) => setTitle(event.target.value)}
+              required="required"
             />
           </div>
           <div className="line"></div>
@@ -156,6 +158,7 @@ const Publish = ({ token }) => {
               type="text"
               placeholder="0.00€"
               onChange={(event) => setPrice(event.target.value)}
+              required="required"
             />
           </div>
           <div className="article-line">

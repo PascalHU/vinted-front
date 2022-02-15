@@ -2,7 +2,7 @@ import "./Publish.css";
 import Dropzone from "react-dropzone";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 const Publish = ({ token }) => {
   const navigate = useNavigate();
@@ -20,6 +20,7 @@ const Publish = ({ token }) => {
     const newPicture = [...picture];
     for (let i = 0; i < picToAdd.length; i++) {
       newPicture.push(picToAdd[i]);
+      //   console.log(picToAdd[i].path);  //fonnctionne 🤔
     }
     setPicture(newPicture);
   };
@@ -54,7 +55,7 @@ const Publish = ({ token }) => {
       console.log(error.response);
     }
   };
-  return (
+  return token ? (
     <div className="background">
       <form className="add-article-area container" onSubmit={addArticle}>
         <h1>Vends ton article</h1>
@@ -172,6 +173,8 @@ const Publish = ({ token }) => {
         </button>
       </form>
     </div>
+  ) : (
+    <Navigate to="/" />
   );
 };
 export default Publish;

@@ -27,12 +27,13 @@ const CheckoutForm = ({ title, price, token }) => {
         amount: total,
       }
     );
-    console.log(response.data);
+    console.log(response);
     if (response.data.status === "succeeded") {
       setMsg("Paiement effectué !");
       setCompleted(true);
     } else {
       setMsg("Paiement echoué 😭");
+      setCompleted(true);
     }
   };
   return (
